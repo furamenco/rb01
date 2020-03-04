@@ -6,4 +6,14 @@
   sample application.
 </p>
 aaaaa
-<p><%= @msg %></p>
+<p><%= pp @msg %></p>
+
+<% @msg.each do |row| %>
+<p>
+  <%= row["user_id"] %>さん。
+  <%= row["user_acount"] %>さん。
+  <%= row["user_passwd"] %>さん。
+  <%= row["user_mail"] %>さん。
+  <%= row["user_created"] %>さん。
+</p>
+<% end %>
