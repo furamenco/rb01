@@ -13,7 +13,15 @@ class IndexController < ActionController::Base
   end
 
   def index
+    require "date"
     get = IndexLib.new
+    
+    @date_list = []
+    @date_list.push(Date.today)
+    for i in 1..6 do
+      @date_list.push(Date.today + i)
+    end
+    
     #@msg = @@database_set;
     @msg = get.hello;
     #@msg = "45454545";
