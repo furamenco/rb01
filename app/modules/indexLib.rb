@@ -1,9 +1,10 @@
-require 'baseLib' 
-class IndexLib < BaseLib
+
+require Rails.root.to_s + '/app/models/' + 't_user' 
+class IndexLib
   def initialize
-    super
+    @@t_user = T_user.new
   end
-  def hello
-    return self.str
+  def get_user
+    return @@t_user.fech_all
   end
 end

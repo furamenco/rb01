@@ -14,7 +14,7 @@ class IndexController < ActionController::Base
 
   def index
     require "date"
-    get = IndexLib.new
+    cls_index = IndexLib.new
     
     @date_list = []
     @date_list.push(Date.today)
@@ -23,7 +23,7 @@ class IndexController < ActionController::Base
     end
     
     #@msg = @@database_set;
-    @msg = get.hello;
+    @msg = cls_index.get_user;
     #@msg = "45454545";
   end
 end

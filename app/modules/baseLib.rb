@@ -5,12 +5,11 @@ class BaseLib
   #コンストラクタ
   def initialize
     require 'yaml'
-    @@database_set = YAML.load_file(Rails.root.to_s + '/config/' + "database.yml")#DB設定を読み込む
-    sql = ""
-    val = ""
-    @@ret = []
+    @@database_set = YAML.load_file(Rails.root.to_s + '/config/' + "database.yml")
+    #sql = ""
+    #val = ""
+    #@@ret = []
     self.db_connection
-    self.db_query(sql, val)
   end
   #DB接続
   def db_connection
@@ -24,12 +23,15 @@ class BaseLib
   end
   
   #query
-  def db_query(sql, values)
-    state = @@conn.prepare('select * from t_user')
+  def db_query(sql, param: nil)
+    state = @@conn.prepare(sql)
+    res = []
     results = state.execute()
     results.each do |row|
       @@ret.push(row)
+      res.push(row)
     end
+    return res
   end
   
   def str
