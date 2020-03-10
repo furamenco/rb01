@@ -1,13 +1,6 @@
-require Rails.root.to_s + '/app/modules/' + 'indexLib' 
-class IndexController < ActionController::Base
-  @@database_set = {
-    "adapter" => "mysql2",
-    "encoding" => "utf8mb4",
-    "username" => "user88",
-    "password" => "tq5rrfBP438Tdoni",
-    "socket" => "/var/lib/mysql/mysql.sock",
-    "datebase" => "rails"
-  }
+require Const::MOD_PATH + 'indexLib' 
+class IndexController < ApplicationController
+  
   def initialize
     #
   end
@@ -22,8 +15,11 @@ class IndexController < ActionController::Base
       @date_list.push(Date.today + i)
     end
     
-    #@msg = @@database_set;
-    @msg = cls_index.get_user;
-    #@msg = "45454545";
+    @msg = cls_index.get_user
+    tm = cls_index.get_times
+    ts = []
+    ts = cls_index.get_time_list(tm[0])
+    
+    @test = ts
   end
 end
